@@ -1,0 +1,4 @@
+#Wed Apr 24 21:29:14 CEST 2019
+base.0=D\:\\Dokumenty\\UnityRepo\\Warblade\\Temp\\gradleOut\\build\\intermediates\\transforms\\dexMerger\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex
