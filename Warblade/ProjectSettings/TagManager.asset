@@ -57,6 +57,9 @@ TagManager:
   - name: Planets
     uniqueID: 4094135763
     locked: 0
+  - name: Coin
+    uniqueID: 1726326525
+    locked: 0
   - name: Projectile
     uniqueID: 1111697911
     locked: 0

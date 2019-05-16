@@ -20,11 +20,14 @@ public class Enemy : MonoBehaviour {
     
     [HideInInspector] public int shotChance; //probability of 'Enemy's' shooting during tha path
     [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
+
+    private CoinSpawner coinSpawner;
     #endregion
 
     private void Start()
     {
         Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+        coinSpawner = GetComponent<CoinSpawner>();
     }
 
     //coroutine making a shot
@@ -41,7 +44,10 @@ public class Enemy : MonoBehaviour {
     {
         health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
         if (health <= 0)
-            Destruction();
+            {
+                Destruction();
+                ScoreUpdate.Score += 100;
+            }
         else
             Instantiate(hitEffect,transform.position,Quaternion.identity,transform);
     }    
@@ -61,7 +67,8 @@ public class Enemy : MonoBehaviour {
     //method of destroying the 'Enemy'
     void Destruction()                           
     {        
-        Instantiate(destructionVFX, transform.position, Quaternion.identity); 
+        Instantiate(destructionVFX, transform.position, Quaternion.identity);
+        coinSpawner.RollToSpawnCoin(transform.position);
         Destroy(gameObject);
     }
 }

@@ -99,4 +99,12 @@ public class PlayerShooting : MonoBehaviour {
     {
         Instantiate(lazer, pos, Quaternion.Euler(rot));
     }
+
+    public void downgradeWeapon()
+    {
+        if(weaponPower > 1)
+        {
+            weaponPower--;
+        }
+    }
 }
