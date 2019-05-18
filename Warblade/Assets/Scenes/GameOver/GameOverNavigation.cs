@@ -16,6 +16,6 @@ public class GameOverNavigation : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuScene");
     }
 }
