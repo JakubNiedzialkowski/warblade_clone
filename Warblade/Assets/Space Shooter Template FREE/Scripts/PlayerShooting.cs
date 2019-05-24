@@ -24,7 +24,7 @@ public class PlayerShooting : MonoBehaviour {
 
 
     [Tooltip("current weapon power")]
-    [Range(1, 4)]       //change it if you wish
+    [Range(1, 5)]       //change it if you wish
     public int weaponPower = 1; 
 
     public Guns guns;
@@ -84,6 +84,18 @@ public class PlayerShooting : MonoBehaviour {
                 guns.rightGunVFX.Play();
                 break;
             case 4:
+                Vector3 temp = guns.rightGun.transform.position;
+                CreateLazerShot(projectileObject, temp, Vector3.zero);
+                temp.x += 0.25f;
+                CreateLazerShot(projectileObject, temp, Vector3.zero);
+                guns.leftGunVFX.Play();
+                temp = guns.leftGun.transform.position;
+                CreateLazerShot(projectileObject, temp, Vector3.zero);
+                temp.x -= 0.25f;
+                CreateLazerShot(projectileObject, temp, Vector3.zero);
+                guns.rightGunVFX.Play();
+                break;
+            case 5:
                 CreateLazerShot(projectileObject, guns.centralGun.transform.position, Vector3.zero);
                 CreateLazerShot(projectileObject, guns.rightGun.transform.position, new Vector3(0, 0, -5));
                 guns.leftGunVFX.Play();
