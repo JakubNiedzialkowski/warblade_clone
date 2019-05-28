@@ -85,7 +85,7 @@ MonoBehaviour:
   - {fileID: 4885918754772142}
   - {fileID: 4415410120431504}
   rotationByPath: 0
-  Loop: 0
+  Loop: 1
   pathColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   shooting:
     shotChance: 40

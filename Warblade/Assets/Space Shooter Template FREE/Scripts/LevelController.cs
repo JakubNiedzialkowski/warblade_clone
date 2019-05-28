@@ -1,24 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-#region Serializable classes
-[System.Serializable]
-public class EnemyWaves 
-{
-    [Tooltip("time for wave generation from the moment the game started")]
-    public float timeToStart;
-
-    [Tooltip("Enemy wave's prefab")]
-    public GameObject wave;
-}
-
-#endregion
+using TMPro;
 
 public class LevelController : MonoBehaviour {
 
+    public GameObject[] Levels;
+
     //Serializable classes implements
-    public EnemyWaves[] enemyWaves; 
+    //public EnemyWaves[] enemyWaves;
+
+    [SerializeField]
+    private GameObject shop;
+
+    [SerializeField]
+    private GameObject messageBox;
+
+
+    [SerializeField]
+    [Tooltip("Interval between shop screen visits")]
+    private int shopLevelInterval = 5;
+
+    private bool isLevelInProgress = false;
+    public static bool isPlayerInShop = false;
+    private int levelCounter = 0;
+    private float timeSinceLevelStarted = 0f;
 
     public GameObject powerUp;
     public float timeForNewPowerup;
@@ -27,28 +33,46 @@ public class LevelController : MonoBehaviour {
     public float planetsSpeed;
     List<GameObject> planetsList = new List<GameObject>();
 
-    Camera mainCamera;   
+    Camera mainCamera;
+    
 
     private void Start()
     {
         mainCamera = Camera.main;
-        //for each element in 'enemyWaves' array creating coroutine which generates the wave
-        for (int i = 0; i<enemyWaves.Length; i++) 
-        {
-            StartCoroutine(CreateEnemyWave(enemyWaves[i].timeToStart, enemyWaves[i].wave));
-        }
+
         StartCoroutine(PowerupBonusCreation());
         StartCoroutine(PlanetsCreation());
     }
-    
-    //Create a new wave after a delay
-    IEnumerator CreateEnemyWave(float delay, GameObject Wave) 
+
+    private void Update()
     {
-        if (delay != 0)
-            yield return new WaitForSeconds(delay);
-        if (Player.instance != null)
-            Instantiate(Wave);
+        if (!isPlayerInShop)
+        {
+            if (!isLevelInProgress)
+            {
+                if(levelCounter<Levels.Length)
+                {
+                    DisplayLevelInfo();
+                    isLevelInProgress = true;
+                    Instantiate(Levels[levelCounter]).GetComponent<Level>().startLevel();
+                    levelCounter++;
+                    timeSinceLevelStarted = 0f;
+                }
+            }
+            else
+            {
+                timeSinceLevelStarted += Time.deltaTime;
+                if (Levels[levelCounter - 1].GetComponent<Level>().isLevelCleared() && timeSinceLevelStarted > 10f)
+                {
+                    isLevelInProgress = false;
+                    if (levelCounter % shopLevelInterval == 0)
+                        EnterShop();
+                }
+            }
+
+        }
     }
+
 
     //endless coroutine generating 'levelUp' bonuses. 
     IEnumerator PowerupBonusCreation() 
@@ -65,6 +89,13 @@ public class LevelController : MonoBehaviour {
                 Quaternion.identity
                 );
         }
+    }
+
+    private void DisplayLevelInfo()
+    {
+        var TMP = messageBox.GetComponent<TextMeshProUGUI>();
+        TMP.text = "Level " + levelCounter.ToString();
+        messageBox.SetActive(true);
     }
 
     IEnumerator PlanetsCreation()
@@ -94,4 +125,12 @@ public class LevelController : MonoBehaviour {
             yield return new WaitForSeconds(timeBetweenPlanets);
         }
     }
+
+    private void EnterShop()
+    {  
+        Time.timeScale = 0;
+        isPlayerInShop = true;
+        shop.SetActive(true);
+    }
+
 }

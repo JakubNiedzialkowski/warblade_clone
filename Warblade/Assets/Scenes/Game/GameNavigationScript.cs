@@ -24,6 +24,7 @@ public class GameNavigationScript : MonoBehaviour
     public void ExitShop()
     {
         Shop.SetActive(false);
+        LevelController.isPlayerInShop = false;
         Time.timeScale = 1;  
     }
 
