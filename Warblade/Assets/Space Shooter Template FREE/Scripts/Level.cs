@@ -21,11 +21,10 @@ public class Level : MonoBehaviour
 
     //Serializable classes implements
     public EnemyWaves[] enemyWaves;
-    private float levelStartTime;
+    private float lastWavesSpawnTime;
 
     public void startLevel()
     {
-        levelStartTime = Time.time;
         for (int i = 0; i < enemyWaves.Length; i++)
         {
             StartCoroutine(CreateEnemyWave(enemyWaves[i].timeToStart, enemyWaves[i].wave));
@@ -48,5 +47,10 @@ public class Level : MonoBehaviour
                 return false;
 
             return true;
+    }
+
+    public float GetLastWaveSpawnTime()
+    {
+       return enemyWaves[enemyWaves.Length - 1].timeToStart;
     }
 }

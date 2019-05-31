@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8010332630677457650}
   - component: {fileID: 8010332630677457649}
   - component: {fileID: 8753215240984535366}
-  - component: {fileID: -4415380460594668134}
+  - component: {fileID: 373479023149957978}
   m_Layer: 0
   m_Name: RedCoin
   m_TagString: Untagged
@@ -116,8 +116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value: 200
   speed: 3
---- !u!61 &-4415380460594668134
-BoxCollider2D:
+--- !u!58 &373479023149957978
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,15 +130,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 1.24}
-    newSize: {x: 0.28, y: 1.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28, y: 1.24}
-  m_EdgeRadius: 0
+  m_Radius: 0.61999995

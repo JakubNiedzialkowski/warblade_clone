@@ -7,14 +7,14 @@ public class LevelController : MonoBehaviour {
 
     public GameObject[] Levels;
 
-    //Serializable classes implements
-    //public EnemyWaves[] enemyWaves;
-
     [SerializeField]
     private GameObject shop;
 
     [SerializeField]
     private GameObject messageBox;
+
+    [SerializeField]
+    private GameObject enterShopButton;
 
 
     [SerializeField]
@@ -25,6 +25,7 @@ public class LevelController : MonoBehaviour {
     public static bool isPlayerInShop = false;
     private int levelCounter = 0;
     private float timeSinceLevelStarted = 0f;
+    private float timeBeforeCanCheckForLevelOver;
 
     public GameObject powerUp;
     public float timeForNewPowerup;
@@ -52,21 +53,29 @@ public class LevelController : MonoBehaviour {
             {
                 if(levelCounter<Levels.Length)
                 {
-                    DisplayLevelInfo();
                     isLevelInProgress = true;
-                    Instantiate(Levels[levelCounter]).GetComponent<Level>().startLevel();
+                    Level currentLevel = Instantiate(Levels[levelCounter]).GetComponent<Level>();
+                    currentLevel.startLevel();
+                    timeBeforeCanCheckForLevelOver = currentLevel.GetLastWaveSpawnTime() + 1f;
+                    Debug.Log(timeBeforeCanCheckForLevelOver);
                     levelCounter++;
+                    if (levelCounter % shopLevelInterval == 1 && levelCounter!=1)
+                        DisplayEnterShopMessage();
+                    else
+                        DisplayLevelInfo();
                     timeSinceLevelStarted = 0f;
                 }
             }
             else
             {
                 timeSinceLevelStarted += Time.deltaTime;
-                if (Levels[levelCounter - 1].GetComponent<Level>().isLevelCleared() && timeSinceLevelStarted > 10f)
+                if (Levels[levelCounter - 1].GetComponent<Level>().isLevelCleared() && timeSinceLevelStarted > timeBeforeCanCheckForLevelOver)
                 {
                     isLevelInProgress = false;
                     if (levelCounter % shopLevelInterval == 0)
-                        EnterShop();
+                    {
+                        StartCoroutine(enterShop());
+                    }
                 }
             }
 
@@ -98,6 +107,20 @@ public class LevelController : MonoBehaviour {
         messageBox.SetActive(true);
     }
 
+    private void DisplayEnterShopMessage()
+    {
+        var TMP = messageBox.GetComponent<TextMeshProUGUI>();
+        TMP.text = "Approaching shop";
+        messageBox.SetActive(true);
+    }
+
+    IEnumerator enterShop()
+    {
+        yield return new WaitForSecondsRealtime(10);
+        Time.timeScale = 0;
+        DisplayLevelInfo();
+        enterShopButton.SetActive(true);
+    }
     IEnumerator PlanetsCreation()
     {
         //Create a new list copying the arrey
@@ -125,12 +148,4 @@ public class LevelController : MonoBehaviour {
             yield return new WaitForSeconds(timeBetweenPlanets);
         }
     }
-
-    private void EnterShop()
-    {  
-        Time.timeScale = 0;
-        isPlayerInShop = true;
-        shop.SetActive(true);
-    }
-
 }

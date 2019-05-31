@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5949033187801441260}
   - component: {fileID: 5949033187801441263}
   - component: {fileID: 4962113426248763480}
-  - component: {fileID: -6747774888924432196}
+  - component: {fileID: 4263603687346178405}
   m_Layer: 0
   m_Name: BronzeCoin
   m_TagString: Untagged
@@ -116,8 +116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value: 50
   speed: 3
---- !u!61 &-6747774888924432196
-BoxCollider2D:
+--- !u!58 &4263603687346178405
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,15 +130,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 1.24}
-    newSize: {x: 0.28, y: 1.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28, y: 1.24}
-  m_EdgeRadius: 0
+  m_Radius: 0.61999995

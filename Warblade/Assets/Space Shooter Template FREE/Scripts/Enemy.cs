@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour {
     [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
 
     private CoinSpawner coinSpawner;
+
+    public string Type = "Enemy";
     #endregion
 
     private void Start()
@@ -33,10 +35,30 @@ public class Enemy : MonoBehaviour {
     //coroutine making a shot
     void ActivateShooting() 
     {
-        if (Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
-        {                         
-            Instantiate(Projectile,  gameObject.transform.position, Quaternion.identity);             
-        }
+            switch (Type)
+            {
+                case "Enemy":
+                    if (Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
+                        Instantiate(Projectile, gameObject.transform.position, Quaternion.identity);
+                break;
+                case "Boss":
+                    if (Random.value < (float)shotChance / 100)
+                    {
+                        Vector3 angle = new Vector3(0, 0, -60);
+                        for (int i = 0; i < 7; i++)
+                        {
+                            Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(angle));
+                            angle.z += 20;
+                        }
+                    }
+                Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+                break;
+                default:
+                    if (Random.value < (float)shotChance / 100)
+                        Instantiate(Projectile, gameObject.transform.position, Quaternion.identity);
+                break;
+            }
+  
     }
 
     //method of getting damage for the 'Enemy'
@@ -45,8 +67,21 @@ public class Enemy : MonoBehaviour {
         health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
         if (health <= 0)
             {
-                Destruction();
-                ScoreUpdate.Score += 100;
+                switch (Type)
+                {
+                    case "Enemy":
+                        Destruction();
+                        ScoreUpdate.Score += 100;
+                        break;
+                    case "Boss":
+                        BossDestruction();
+                        ScoreUpdate.Score += 5000;
+                        break;
+                    default:
+                        Destruction();
+                        ScoreUpdate.Score += 100;
+                        break;
+                }
             }
         else
             Instantiate(hitEffect,transform.position,Quaternion.identity,transform);
@@ -69,6 +104,13 @@ public class Enemy : MonoBehaviour {
     {        
         Instantiate(destructionVFX, transform.position, Quaternion.identity);
         coinSpawner.RollToSpawnCoin(transform.position);
+        Destroy(gameObject);
+    }
+
+    void BossDestruction()
+    {
+        Instantiate(destructionVFX, transform.position, Quaternion.identity);
+        coinSpawner.BossRollToSpawnCoins(transform.position);
         Destroy(gameObject);
     }
 }

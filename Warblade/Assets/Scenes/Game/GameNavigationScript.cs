@@ -9,6 +9,9 @@ public class GameNavigationScript : MonoBehaviour
     [SerializeField]
     private GameObject Shop;
 
+    [SerializeField]
+    private GameObject enterShopButton;
+
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -18,6 +21,7 @@ public class GameNavigationScript : MonoBehaviour
     public void EnterShop()
     {
         Time.timeScale = 0;
+        enterShopButton.SetActive(false);
         Shop.SetActive(true);
     }
 
