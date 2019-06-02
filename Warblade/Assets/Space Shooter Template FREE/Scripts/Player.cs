@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public static int shields = 2;
     private Vector3 startPosition;
     public static int money = 0;
+    public static int moneyEarnedThisLevel = 0;
 
     public float immortalTime = 2.0f;
     public float shieldImmortalTime = 4.0f;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
                 shields--;
                 StartCoroutine(enableImmortality(shieldImmortalTime));
                 UpdateUiShields();
+                SoundController.PlaySound("player_shield");
             }
             else
             {
@@ -63,6 +65,7 @@ public class Player : MonoBehaviour
                     destruction();
                 else
                     gameOverDestruction();
+                SoundController.PlaySound("player_destruction");
                 resetPlayerPosition();
             }
         }     
@@ -150,6 +153,7 @@ public class Player : MonoBehaviour
         health = 3;
         shields = 2;
         money = 0;
+        moneyEarnedThisLevel = 0;
         isImmortal = false;
     }
 

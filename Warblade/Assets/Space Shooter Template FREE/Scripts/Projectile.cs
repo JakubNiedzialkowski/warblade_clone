@@ -37,6 +37,11 @@ public class Projectile : MonoBehaviour {
     {
         Destroy(gameObject);
     }
+
+    void OnBecameInvisible()
+    {
+        Destruction();
+    }
 }
 
 

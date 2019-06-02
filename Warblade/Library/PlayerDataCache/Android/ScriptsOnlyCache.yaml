@@ -26,8 +26,11 @@ ScriptsOnlyBuild:
     - ScoreUpdate
     - ShopButton
     - ShopScript
+    - SoundController
     - VisualEffect
     - Wave
+    Unity.Analytics.Tracker.dll:
+    - UnityEngine.Analytics.AnalyticsEventTracker
     Unity.TextMeshPro.dll:
     - TMPro.TMP_ColorGradient
     - TMPro.TMP_FontAsset
@@ -86,15 +89,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9432}
     - Class: 114
-      Script: {instanceID: 10142}
+      Script: {instanceID: 10144}
     - Class: 114
-      Script: {instanceID: 10282}
+      Script: {instanceID: 10284}
     - Class: 114
-      Script: {instanceID: 10294}
+      Script: {instanceID: 10296}
     - Class: 114
-      Script: {instanceID: 10610}
+      Script: {instanceID: 10612}
     - Class: 114
-      Script: {instanceID: 10620}
+      Script: {instanceID: 10622}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -130,6 +133,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 109
@@ -153,17 +158,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9790}
     - Class: 114
-      Script: {instanceID: 10142}
+      Script: {instanceID: 10144}
     - Class: 114
-      Script: {instanceID: 10154}
+      Script: {instanceID: 10156}
     - Class: 114
-      Script: {instanceID: 10294}
+      Script: {instanceID: 10296}
     - Class: 114
-      Script: {instanceID: 10534}
+      Script: {instanceID: 10536}
     - Class: 114
-      Script: {instanceID: 10610}
+      Script: {instanceID: 10612}
     - Class: 114
-      Script: {instanceID: 10620}
+      Script: {instanceID: 10622}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -206,6 +211,8 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -252,6 +259,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9576}
     - Class: 114
+      Script: {instanceID: 9756}
+    - Class: 114
       Script: {instanceID: 9808}
     - Class: 114
       Script: {instanceID: 9872}
@@ -268,33 +277,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10102}
     - Class: 114
-      Script: {instanceID: 10142}
+      Script: {instanceID: 10140}
     - Class: 114
-      Script: {instanceID: 10150}
+      Script: {instanceID: 10144}
     - Class: 114
-      Script: {instanceID: 10294}
+      Script: {instanceID: 10152}
     - Class: 114
-      Script: {instanceID: 10336}
+      Script: {instanceID: 10296}
     - Class: 114
-      Script: {instanceID: 10588}
+      Script: {instanceID: 10338}
     - Class: 114
-      Script: {instanceID: 10610}
+      Script: {instanceID: 10590}
     - Class: 114
-      Script: {instanceID: 10620}
+      Script: {instanceID: 10612}
     - Class: 114
-      Script: {instanceID: 10628}
+      Script: {instanceID: 10622}
     - Class: 114
-      Script: {instanceID: 10646}
+      Script: {instanceID: 10630}
     - Class: 114
-      Script: {instanceID: 10662}
+      Script: {instanceID: 10648}
     - Class: 114
-      Script: {instanceID: 10686}
+      Script: {instanceID: 10664}
     - Class: 114
-      Script: {instanceID: 10694}
+      Script: {instanceID: 10688}
     - Class: 114
-      Script: {instanceID: 13112}
+      Script: {instanceID: 10696}
     - Class: 114
-      Script: {instanceID: 47900}
+      Script: {instanceID: 10698}
+    - Class: 114
+      Script: {instanceID: 12418}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -888,7 +899,7 @@ ScriptsOnlyBuild:
     className: AnalyticsEventTrackerEditor
   - hash:
       serializedVersion: 2
-      Hash: 0ac894fbc3244b6105d9b8f3fa12a29e
+      Hash: c1c7d93242e4cbda6c423871a2b90f0f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
@@ -906,7 +917,7 @@ ScriptsOnlyBuild:
     className: MobileControlRig
   - hash:
       serializedVersion: 2
-      Hash: 88efc0b940cb9349b444bc03bf137190
+      Hash: acbdd7af36d261d695a71b6681b89e55
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameNavigationScript
@@ -918,7 +929,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 306cc55d4904ddf055b2b8137e772e69
+      Hash: e7782d6a04faa4c7b45e587f4d550bc4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelController
@@ -930,7 +941,7 @@ ScriptsOnlyBuild:
     className: Wave
   - hash:
       serializedVersion: 2
-      Hash: 03239b7c8943366a5d5775bad99abf8a
+      Hash: 08e15cbc162d2aa8171e5551eb3822e0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CoinSpawner
@@ -940,6 +951,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: f8e1ad0fcfb316600d8ee81cc08ff170
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MessageBox
   - hash:
       serializedVersion: 2
       Hash: 4a0369cd366c126cd420018a4ac01f32
@@ -1140,10 +1157,10 @@ ScriptsOnlyBuild:
     className: Level
   - hash:
       serializedVersion: 2
-      Hash: f8e1ad0fcfb316600d8ee81cc08ff170
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MessageBox
+    className: SoundController
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainMenu/MainMenuScene.unity

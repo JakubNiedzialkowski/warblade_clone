@@ -56,8 +56,7 @@ public class LevelController : MonoBehaviour {
                     isLevelInProgress = true;
                     Level currentLevel = Instantiate(Levels[levelCounter]).GetComponent<Level>();
                     currentLevel.startLevel();
-                    timeBeforeCanCheckForLevelOver = currentLevel.GetLastWaveSpawnTime() + 1f;
-                    Debug.Log(timeBeforeCanCheckForLevelOver);
+                    timeBeforeCanCheckForLevelOver = currentLevel.GetLastWaveSpawnTime() + 10f;
                     levelCounter++;
                     if (levelCounter % shopLevelInterval == 1 && levelCounter!=1)
                         DisplayEnterShopMessage();
@@ -72,6 +71,7 @@ public class LevelController : MonoBehaviour {
                 if (Levels[levelCounter - 1].GetComponent<Level>().isLevelCleared() && timeSinceLevelStarted > timeBeforeCanCheckForLevelOver)
                 {
                     isLevelInProgress = false;
+                    SoundController.PlaySound("level_completed");
                     if (levelCounter % shopLevelInterval == 0)
                     {
                         StartCoroutine(enterShop());

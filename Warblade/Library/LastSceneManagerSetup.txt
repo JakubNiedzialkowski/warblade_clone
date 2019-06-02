@@ -1,8 +1,4 @@
 sceneSetups:
-- path: Assets/Space Shooter Template FREE/Scenes/Demo_Scene.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
 - path: Assets/Scenes/GameOver/GameOverScene.unity
   isLoaded: 0
   isActive: 0
@@ -10,4 +6,8 @@ sceneSetups:
 - path: Assets/Scenes/MainMenu/MainMenuScene.unity
   isLoaded: 0
   isActive: 0
+  isSubScene: 0
+- path: Assets/Space Shooter Template FREE/Scenes/Demo_Scene.unity
+  isLoaded: 1
+  isActive: 1
   isSubScene: 0

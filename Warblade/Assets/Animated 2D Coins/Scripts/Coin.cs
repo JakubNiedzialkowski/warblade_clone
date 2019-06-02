@@ -18,7 +18,14 @@ public class Coin : MonoBehaviour
         if (collision.tag == "Player")
         {
             Player.money += Value;
+            Player.moneyEarnedThisLevel += Value;
+            SoundController.PlaySound("money_collected");
             Destroy(gameObject);
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

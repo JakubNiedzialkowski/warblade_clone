@@ -20,6 +20,7 @@ public class GameNavigationScript : MonoBehaviour
 
     public void EnterShop()
     {
+        ShopScript.moneySpent = 0;
         Time.timeScale = 0;
         enterShopButton.SetActive(false);
         Shop.SetActive(true);

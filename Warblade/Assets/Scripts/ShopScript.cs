@@ -3,10 +3,12 @@ using UnityEngine.UI;
 
 public class ShopScript : MonoBehaviour
 {
+    public static int moneySpent = 0;
     // Update is called once per frame
     void Start()
     {
         UpdateButtons();
+        moneySpent = 0;
     }
 
     public void AddHealth()
@@ -19,7 +21,9 @@ public class ShopScript : MonoBehaviour
             Player.instance.UpdateUiHealth();
             MoneyUpdate.SubtractMoney(price);
         }
-        UpdateShieldButton();
+        UpdateHealthButton();
+        moneySpent += price;
+        SoundController.PlaySound("item_bought");
     }
 
     public void AddShield()
@@ -33,6 +37,8 @@ public class ShopScript : MonoBehaviour
             MoneyUpdate.SubtractMoney(price);
         }
         UpdateShieldButton();
+        moneySpent += price;
+        SoundController.PlaySound("item_bought");
     }
 
     public void GetDoubleShot()
@@ -45,6 +51,8 @@ public class ShopScript : MonoBehaviour
             MoneyUpdate.SubtractMoney(price);
         }
         UpdateWeaponsButtons();
+        moneySpent += price;
+        SoundController.PlaySound("item_bought");
     }
 
     public void GetTripleShot()
@@ -57,6 +65,8 @@ public class ShopScript : MonoBehaviour
             MoneyUpdate.SubtractMoney(price);
         }
         UpdateWeaponsButtons();
+        moneySpent += price;
+        SoundController.PlaySound("item_bought");
     }
 
     public void GetQuadShot()
@@ -69,6 +79,8 @@ public class ShopScript : MonoBehaviour
             MoneyUpdate.SubtractMoney(price);
         }
         UpdateWeaponsButtons();
+        moneySpent += price;
+        SoundController.PlaySound("item_bought");
     }
 
     public void GetPentaShot()
@@ -81,6 +93,8 @@ public class ShopScript : MonoBehaviour
             MoneyUpdate.SubtractMoney(price);
         }
         UpdateWeaponsButtons();
+        moneySpent += price;
+        SoundController.PlaySound("item_bought");
     }
 
     private void UpdateButtons()

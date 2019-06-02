@@ -27,8 +27,10 @@ public class Level : MonoBehaviour
     {
         for (int i = 0; i < enemyWaves.Length; i++)
         {
+
             StartCoroutine(CreateEnemyWave(enemyWaves[i].timeToStart, enemyWaves[i].wave));
         }
+        Player.moneyEarnedThisLevel = 0;
     }
 
     //Create a new wave after a delay

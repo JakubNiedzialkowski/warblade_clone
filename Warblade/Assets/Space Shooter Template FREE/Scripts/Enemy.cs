@@ -39,7 +39,10 @@ public class Enemy : MonoBehaviour {
             {
                 case "Enemy":
                     if (Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
+                    {
                         Instantiate(Projectile, gameObject.transform.position, Quaternion.identity);
+                        SoundController.PlaySound("enemy_laser");
+                    }
                 break;
                 case "Boss":
                     if (Random.value < (float)shotChance / 100)
@@ -50,12 +53,16 @@ public class Enemy : MonoBehaviour {
                             Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(angle));
                             angle.z += 20;
                         }
+                    SoundController.PlaySound("enemy_laser");
                     }
                 Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
                 break;
                 default:
                     if (Random.value < (float)shotChance / 100)
+                    {
                         Instantiate(Projectile, gameObject.transform.position, Quaternion.identity);
+                        SoundController.PlaySound("enemy_laser");
+                    }
                 break;
             }
   
@@ -104,6 +111,7 @@ public class Enemy : MonoBehaviour {
     {        
         Instantiate(destructionVFX, transform.position, Quaternion.identity);
         coinSpawner.RollToSpawnCoin(transform.position);
+        SoundController.PlaySound("enemy_destruction");
         Destroy(gameObject);
     }
 

@@ -55,7 +55,8 @@ public class PlayerShooting : MonoBehaviour {
         {
             if (Time.time > nextFire)
             {
-                MakeAShot();                                                         
+                MakeAShot();
+                SoundController.PlaySound("player_laser");
                 nextFire = Time.time + 1 / fireRate;
             }
         }

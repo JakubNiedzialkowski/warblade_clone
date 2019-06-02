@@ -11,7 +11,13 @@ public class Bonus : MonoBehaviour {
             {
                 PlayerShooting.instance.weaponPower++;
             }
+            SoundController.PlaySound("power_up");
             Destroy(gameObject);
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
