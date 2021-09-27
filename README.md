@@ -1,6 +1,6 @@
 # Spaceblade: Galaxy Chronicles
 
-This application is a 2D mobile game developed in Unity. It's heavily inspired by the game Warblade. It was built to learn game development in Unity. It features use of VFX and SFX and touch controls. Additionally it collects simple performance such as beaten enemy waves, items bought in store, amount of collected money and default session data using Unity Analytics. Visual and audio assets are free and available online and were created by other artists. Certain scripts are also part of free asset packs available through Unity.
+This application is a 2D mobile game developed in Unity. It's heavily inspired by the game Warblade. It was built to learn game development in Unity. It features use of VFX and SFX and touch controls. Additionally it collects simple performance data such as beaten enemy waves, items bought in store, amount of collected money and default session data using Unity Analytics. Visual and audio assets are free and available online and were created by other artists. Certain scripts are also part of free asset packs available through Unity.
 
 ## Gameplay
 
